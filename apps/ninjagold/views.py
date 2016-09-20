@@ -8,7 +8,7 @@ def index(request):
         request.session['yourgold'] = 0
     if not 'goldlog' in request.session:
         request.session['goldlog'] = ''
-    return render(request, 'index.html')
+    return render(request, 'ninjagold/index.html')
 
 def findgold(request):
     if request.method == 'POST':

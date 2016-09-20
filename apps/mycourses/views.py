@@ -7,7 +7,7 @@ def index(request):
     context = {}
     courses = models.Courses.objects.all()
     context['courses'] = courses
-    return render(request, 'index.html', context)
+    return render(request, 'mycourses/index.html', context)
 
 def addcourse(request):
     context = {}
@@ -38,7 +38,7 @@ def deletecourse(request, courseid):
     context['delcourse'] = delcourse
     context['courseid'] = courseid
     print courseid
-    return render(request, 'delete.html', context)
+    return render(request, 'mycourses/delete.html', context)
 
 def confirmdelete(request, courseid):
     if request.method == 'POST':

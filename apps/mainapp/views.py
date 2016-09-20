@@ -5,4 +5,4 @@ from ..mycourses.models import Courses, CourseDescriptions
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'mainapp/index.html')

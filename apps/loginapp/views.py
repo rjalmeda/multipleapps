@@ -5,7 +5,7 @@ from .models import Users
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'loginapp/index.html')
 
 def register(request):
     if request.method == 'POST':
@@ -80,10 +80,10 @@ def login(request):
                 messages.add_message(request,messages.ERROR, message)
             return redirect('/')
     else:
-        return render(request, 'index.html')
+        return redirect('/')
 
 def success(request):
     context = {}
     allusers = Users.userManager.all()
     context['allusers'] = allusers
-    return render(request, 'success.html', context)
+    return render(request, 'loginapp/success.html', context)
