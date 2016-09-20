@@ -1,0 +1,19 @@
+* {
+    margin:3px;
+}
+div.wrapper {
+    margin: 50px;
+
+}
+button {
+    background: #4545e3;
+    color: white;
+    padding: 4px 6px;
+    border: 2px solid black;
+    box-shadow: 3px 3px black;
+    margin-left: 190px;
+
+}
+td {
+    text-align: right;
+}

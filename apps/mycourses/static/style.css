@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+}
+
+div.wrapper{
+    margin: 50px;
+    width: 900px;
+}
+div.addcoursediv {
+    width: 420px;
+    height: 190px;
+    vertical-align: top;
+    display: inline-block
+}
+div.errordiv {
+    display: inline-block;
+}
+input#crs_name_input {
+    border: 2px solid black;
+    resize: none;
+    display: inline-block;
+    margin-left: 36px;
+    margin-bottom: 10px;
+}
+textarea#crs_dsc_input {
+    border: 2px solid black;
+    resize: none;
+    margin-right: 30px;
+    display: inline-block;
+}
+
+label {
+    vertical-align: top;
+}
+button {
+    padding: 3px 6px;
+    background: green;
+    border: 3px solid black;
+    font-size: 14pt;
+    color: white;
+    box-shadow: 5px 5px gray;
+    margin-left: 290px;
+    margin-top: 10px;
+}
+table#coursesid {
+    border: 3px solid black;
+}
+table#coursesid th {
+    background: #969696;
+    font-weight: 600;
+    padding: 5px 10px 5px 10px;
+    border-right: 3px solid black;
+    text-align: left;
+}
+table#coursesid tr.rowodd {
+    background: #dedede;
+}
+
+table#coursesid tr.roweven {
+    background: white;
+}
+
+table#coursesid tr td {
+    border-right: 3px solid black;
+}
+
+table#coursesid tr td.rowend {
+    border-right: 0px;
+}
+
+table#coursesid tr.rowend,table#coursesid th.rowend {
+    border-right: 0px;
+}
+button.confirmno {
+    padding: 3px 6px;
+    background: gray;
+    border: 3px solid black;
+    font-size: 14pt;
+    color: white;
+    box-shadow: 5px 5px gray;
+    margin-left: 290px;
+    margin-top: 20px;
+}
+button.confirmyes {
+    padding: 3px 6px;
+    background: red;
+    border: 3px solid black;
+    font-size: 14pt;
+    color: white;
+    box-shadow: 5px 5px gray;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+div.deletediv {
+    margin: 40px;
+}
+
+div.deletediv h1 {
+    margin-bottom: 20px;
+}
+
+div.deletediv form textarea {
+    border: 1px solid black;
+    resize: none;
+    
+}
+
+table.deletediv th, table.deletediv td {
+    text-align: left;
+    font-size: 16pt;
+}

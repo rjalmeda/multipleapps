@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css'%}">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'script.js'%}"></script>
+    <title>COURSES!</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="addcoursediv">
+            <h2>Add a new course</h2>
+            <form action="/addcourse" method="post">
+                {% csrf_token %}
+                <label for="crs_name_input">Name: </label><input id='crs_name_input' name='c_name' type="text" size="35" style="font-family:sans serif"><br>
+                <label for="crs_dsc_input">Description: </label><textarea id="crs_dsc_input" name='c_desc' cols="36" rows="4" style="font-family:sans serif"></textarea>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+        <div class="errordiv">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="coursesdiv">
+            <h2>Courses</h2>
+                <table id="coursesid">
+                    
+                    <tr>
+                        <th style="width: 320px;">Course Name</th>
+                        <th style="width: 220px;">Description</th>
+                        <th style="width: 160px;">Date Added</th>
+                        <th style="width: 90px;"class="rowend">Action</th>
+                    </tr>
+                    {% for course in courses %}
+                        <tr style="border-top: 1px solid black">
+                            <td>{{course.name}}</td>  
+                                {% for description in course.course_name.all %}
+                                    <td>{{description.description}}</td>
+                            {% endfor %}
+                            <td>{{course.created_at}}</td>
+                            <td><a href='/deletecourse/{{course.id}}'>Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    
+<!--                Sample Rows
+                    <tr class="rowodd">
+                        <td>How to be a ninja</td>
+                        <td></td>
+                        <td>Dec 1st 2013 5:23pm</td>
+                        <td class="rowend">remove</td>
+                    </tr>
+                    <tr class="roweven">
+                        <td>How to fly</td>
+                        <td></td>
+                        <td>Dec 1st 2013 5:23pm</td>
+                        <td class="rowend">remove</td>
+                    </tr>
+-->
+                </table>
+        </div>
+<!--
+        <div>
+            Testing
+            {% for course in courses %}
+                <p>{{course.id}} {{course.name}}  
+                    {% for description in course.course_name.all %}
+                        {{description.description}}
+                    {% endfor %}
+                </p>
+            {% endfor %}
+        </div>
+-->
+    </div>
+
+</body>
+</html>
