@@ -28,7 +28,7 @@ class UserManager(models.Manager):
             password = password.encode()
             hashedpw = bcrypt.hashpw(password, bcrypt.gensalt())
             try: 
-                newuser = Users.userManager.create(first_name = postdata['first_name'], last_name = postdata['last_name'], email = postdata['email'],password = hashedpw)
+                newuser = Users.userManager.create(first_name = postdata['first_name'], last_name = postdata['last_name'], email = postdata['email'],password = hashedpw, gold = 0)
                 response['success'].append('User Created')
                 return response
             except:
@@ -67,4 +67,6 @@ class Users(models.Model):
     password = models.CharField(max_length=255)
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
+    gold = models.IntegerField()
     userManager = UserManager()
+    

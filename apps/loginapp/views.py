@@ -60,10 +60,12 @@ def register(request):
             request.session['last_name'] = you.last_name
             request.session['userid'] = you.id
             request.session['email'] = you.email
+            request.session['yourgold'] = you.gold
             print request.session['first_name'] 
             print request.session['last_name'] 
             print request.session['userid'] 
             print request.session['email'] 
+            print request.session['yourgold']
             for message in user['success']:
                 messages.add_message(request,messages.SUCCESS,message)
             return redirect('/login/success')
@@ -80,7 +82,11 @@ def login(request):
         print login
         if login['success']:
             you = Users.userManager.get(email=request.POST['email'])
-            
+            request.session['first_name'] = you.first_name
+            request.session['last_name'] = you.last_name
+            request.session['userid'] = you.id
+            request.session['email'] = you.email
+            request.session['yourgold'] = you.gold
             print request.session['first_name'] 
             print request.session['last_name'] 
             print request.session['userid'] 
