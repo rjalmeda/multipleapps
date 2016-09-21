@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 class Classroom(models.Model):
-    FK_course = models.ForeignKey(Courses)
-    FK_student = models.ForeignKey(Users)
+    FK_course = models.ForeignKey(Courses, related_name='classroom_course')
+    FK_student = models.ForeignKey(Users, related_name='classroom_student')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)

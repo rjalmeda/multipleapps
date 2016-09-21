@@ -55,35 +55,52 @@ def register(request):
         user = Users.userManager.register(request.POST)
         print user
         if user['success']:
-            request.session['user'] = request.POST['first_name']
+            you = Users.userManager.get(email=request.POST['email'])
+            request.session['first_name'] = you.first_name
+            request.session['last_name'] = you.last_name
+            request.session['userid'] = you.id
+            request.session['email'] = you.email
+            print request.session['first_name'] 
+            print request.session['last_name'] 
+            print request.session['userid'] 
+            print request.session['email'] 
             for message in user['success']:
                 messages.add_message(request,messages.SUCCESS,message)
-            return redirect('/success')
+            return redirect('/login/success')
         
         else: 
             for message in user['errors']:
                 messages.add_message(request,messages.ERROR, message)
-            return redirect('/')
+            return redirect('/login/')
     else:
-        return redirect('/')
+        return redirect('/login/')
 def login(request):
     if request.method == 'POST':
         login = Users.userManager.login(request.POST)
         print login
         if login['success']:
-            request.session['user'] = Users.userManager.get(email=request.POST['email']).first_name
+            you = Users.userManager.get(email=request.POST['email'])
+            
+            print request.session['first_name'] 
+            print request.session['last_name'] 
+            print request.session['userid'] 
+            print request.session['email'] 
             for message in login['success']:
                 messages.add_message(request,messages.SUCCESS,message)
-            return redirect('/success')
+            return redirect('/login/success')
         else:
             for message in login['errors']:
                 messages.add_message(request,messages.ERROR, message)
-            return redirect('/')
+            return redirect('/login/')
     else:
-        return redirect('/')
+        return redirect('/login/')
 
 def success(request):
     context = {}
     allusers = Users.userManager.all()
     context['allusers'] = allusers
     return render(request, 'loginapp/success.html', context)
+
+def delete(request, userid):
+    Users.userManager.get(id=userid).delete()
+    return redirect('/login/success')

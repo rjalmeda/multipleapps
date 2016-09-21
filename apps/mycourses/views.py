@@ -6,6 +6,7 @@ from . import models
 def index(request):
     context = {}
     courses = models.Courses.objects.all()
+    print courses
     context['courses'] = courses
     return render(request, 'mycourses/index.html', context)
 
@@ -16,19 +17,19 @@ def addcourse(request):
         c_desc = request.POST['c_desc']
         if len(c_name) < 1 :
             messages.add_message(request, messages.ERROR , 'Course name is empty')
-            return redirect('/')
+            return redirect('/courses/')
         elif len(c_desc) < 1 :
             messages.add_message(request, messages.ERROR, 'Please add a description for the course.')
-            return redirect('/')
+            return redirect('/courses/')
         else:
             course = models.Courses.objects.create(name = c_name)
             course.save()
             courseFK = course.id
             coursedescription = models.CourseDescriptions.objects.create(FK_course_name = course, description = c_desc)
             coursedescription.save()
-            return redirect('/')
+            return redirect('/courses/')
     else: 
-        return redirect('/')
+        return redirect('/courses/')
 
 def deletecourse(request, courseid):
     context = {}
@@ -45,6 +46,6 @@ def confirmdelete(request, courseid):
         print courseid
         models.CourseDescriptions.objects.get(FK_course_name__id=courseid).delete()
         models.Courses.objects.get(id=courseid).delete()
-        return redirect('/')
+        return redirect('/courses/')
     else:
-        return redirect('/')
+        return redirect('/courses/')

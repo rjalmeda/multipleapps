@@ -12,7 +12,7 @@
     <div class="wrapper">
         <div class="addcoursediv">
             <h2>Add a new course</h2>
-            <form action="/addcourse" method="post">
+            <form action="/courses/addcourse" method="post">
                 {% csrf_token %}
                 <label for="crs_name_input">Name: </label><input id='crs_name_input' name='c_name' type="text" size="35" style="font-family:sans serif"><br>
                 <label for="crs_dsc_input">Description: </label><textarea id="crs_dsc_input" name='c_desc' cols="36" rows="4" style="font-family:sans serif"></textarea>
@@ -45,40 +45,14 @@
                             <td>{{course.name}}</td>  
                                 {% for description in course.course_name.all %}
                                     <td>{{description.description}}</td>
-                            {% endfor %}
+                                {% endfor %}
                             <td>{{course.created_at}}</td>
-                            <td><a href='/deletecourse/{{course.id}}'>Delete</a></td>
+                            <td><a href='/courses/deletecourse/{{course.id}}'>Delete</a></td>
                         </tr>
                     {% endfor %}
-                    
-<!--                Sample Rows
-                    <tr class="rowodd">
-                        <td>How to be a ninja</td>
-                        <td></td>
-                        <td>Dec 1st 2013 5:23pm</td>
-                        <td class="rowend">remove</td>
-                    </tr>
-                    <tr class="roweven">
-                        <td>How to fly</td>
-                        <td></td>
-                        <td>Dec 1st 2013 5:23pm</td>
-                        <td class="rowend">remove</td>
-                    </tr>
--->
                 </table>
         </div>
-<!--
-        <div>
-            Testing
-            {% for course in courses %}
-                <p>{{course.id}} {{course.name}}  
-                    {% for description in course.course_name.all %}
-                        {{description.description}}
-                    {% endfor %}
-                </p>
-            {% endfor %}
-        </div>
--->
+
     </div>
 
 </body>

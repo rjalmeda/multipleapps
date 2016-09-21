@@ -4,6 +4,7 @@
     <head>{% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'ninjagold/style.css' %}"
         <script type="text/javascript" src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<!--
         <style>
             * {
                 margin: 0px;
@@ -83,6 +84,7 @@
             }
         
         </style>
+-->
     </head>
 
     <body>
@@ -93,7 +95,7 @@
             <div class="findGoldWin">
                 <h3>Farm</h3>
                 <p>(earns 10-20 gold)</p>
-                <form action="/findgold" method='POST'>
+                <form action="/ninjagold/findgold" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name='building' value='farm'>
                     <button type='submit'>Find Gold!</button>
@@ -102,7 +104,7 @@
             <div class="findGoldWin">
                 <h3>Cave</h3>
                 <p>(earns 5-10 gold)</p>
-                <form action="/findgold" method='POST'>
+                <form action="/ninjagold/findgold" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name='building' value='cave'>
                     <button type='submit'>Find Gold!</button>
@@ -111,7 +113,7 @@
             <div class="findGoldWin">
                 <h3>House</h3>
                 <p>(earns 2-5 gold)</p>
-                <form action="/findgold" method='POST'>
+                <form action="/ninjagold/findgold" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name='building' value='house'>
                     <button type='submit'>Find Gold!</button>
@@ -120,7 +122,7 @@
             <div class="findGoldWin">
                 <h3>Casino</h3>
                 <p>(earns/takes 0-50 gold)</p>
-                <form action="/findgold" method='POST'>
+                <form action="/ninjagold/findgold" method='POST'>
                     {% csrf_token %}
                     <input type="hidden" name='building' value='casino'>
                     <button type='submit'>Find Gold!</button>
@@ -130,7 +132,8 @@
                 <h5>Activities: </h5><br>
                 <textarea disabled>{{  request.session.goldlog  }}</textarea>
             </div>
-            <form action="/reset" method="POST">
+            <a href="/"><button style="padding: 5px 5px; margin-bottom: 10px;">Register for Classes</button></a>
+            <form action="/ninjagold/reset" method="POST">
                 {% csrf_token %}
                 <button class="resetbutton" type="submit">Reset</button>
             </form>

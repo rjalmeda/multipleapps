@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Untitled Document</title>
+    <meta http-equiv="refresh" content="5;url=/" />
 </head>
 <body>
+    {% if request.session.first_name %}
+    <h1>SUCCESS! Welcome, {{request.session.first_name}}!</h1>
+    {% endif %}
     {% if messages %}
-    <h1>SUCCESS! Welcome, {{request.session.user}}!</h1>
         {% for message in messages %}
             <p>{{message}}</p>
         {% endfor %}
     {% endif %}
-    
+    <h4>Redirecting in 5 seconds...</h4>
     <h1 style="text-decoration:underline;">Registered users</h1>
     {% for user in allusers %}
-        <p>{{user.first_name}} {{user.last_name}} {{user.email}}</p>
+        <p>{{user.first_name}} {{user.last_name}} {{user.email}} - {{user.id}} - <a href="/login/delete/{{user.id}}">Delete</a></p>
     {% endfor %}
 </body>
 </html>

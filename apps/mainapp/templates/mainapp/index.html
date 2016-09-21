@@ -3,10 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Main App</title>
+    <style>
+        button {
+            padding:  2px 4px;
+            background: gray;
+            border: 3px solid black;
+            box-shadow: 2px 2px black;
+        }
+        button.reset {
+            margin-top: 100px;
+        }
+    </style>
 </head>
 <body>
 
+<!--
     <h1>YAYAYAYAAYYAYAYAYA main app</h1>
+    {% if request.session.first_name %}
+    <p>Hello, {{request.session.first_name}}</p>
+    <p>{{request.session.first_name}} {{request.session.last_name}}</p>
+    <p>{{request.session.email}}</p>
+    <p>{{request.session.userid}}</p>
+    {% endif%}
 
+    <a href="/reset"><button>RESET</button></a>
+-->
+    
+    <h1>CLASSES</h1>
+    <table style="border:2px solid black">
+        <tr>
+            <th style="width: 120px;">Course</th>
+            <th style="width: 320px;">Course Description</th>
+            <th style="width: 120px;">Students</th>
+            <th style="width: 100px;">Enroll</th>
+        </tr>
+        {% for course in courses %}
+            <tr style="border-top: 1px solid black">
+                <td>{{course.id}}-{{course.name}}</td>  
+                    {% for description in course.course_name.all %}
+                        <td>{{description.description}}</td>
+                    {% endfor %}
+                <td>
+                    {{course.classroom_course.count}}
+                </td>
+                <td>
+                    {% if request.session.first_name %}
+                    <a href="/register/{{course.id}}">Register</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="/login/"><button>Login</button></a>
+    <a href="/reset"><button class='reset'>Logout</button></a>
+    <a href="/courses/"><button>Courses</button></a>
+    <a href="/ninjagold/"><button>Make Money</button></a>
+    <h2>Your Gold: </h2>{{request.session.yourgold}}
+    
 </body>
 </html>

@@ -18,19 +18,19 @@ def findgold(request):
             request.session['yourgold'] += goldchange
             newstatus = 'You earned '+str(goldchange)+' Time: '+str(datetime.now())+'\n'
             request.session['goldlog'] = newstatus + request.session['goldlog']
-            return redirect('/')
+            return redirect('/ninjagold')
         elif request.POST['building'] == 'cave':
             goldchange = random.randrange(5,11)
             request.session['yourgold'] += goldchange
             newstatus = 'You earned '+str(goldchange)+' Time: '+str(datetime.now())+'\n'
             request.session['goldlog'] = newstatus + request.session['goldlog']
-            return redirect('/')
+            return redirect('/ninjagold')
         elif request.POST['building'] == 'house':
             goldchange = random.randrange(2,6)
             request.session['yourgold'] += goldchange
             newstatus = 'You earned '+str(goldchange)+' Time: '+str(datetime.now())+'\n'
             request.session['goldlog'] = newstatus + request.session['goldlog']
-            return redirect('/')
+            return redirect('/ninjagold')
         elif request.POST['building'] == 'casino':
             goldchange = random.randrange(-50,51)
             request.session['yourgold'] += goldchange
@@ -43,11 +43,11 @@ def findgold(request):
             else:
                 newstatus = 'You lost '+str(goldchange)+' Time: '+str(datetime.now())+'\n'
                 request.session['goldlog'] = newstatus + request.session['goldlog']
-            return redirect('/')
+            return redirect('/ninjagold')
     else:
         return redirect (request, '/')
     
 def reset(request):
     del request.session['yourgold']
     del request.session['goldlog']
-    return redirect('/')
+    return redirect('/ninjagold')

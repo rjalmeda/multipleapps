@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
+    url(r'^', include('apps.mainapp.urls')),
     url(r'^login/', include('apps.loginapp.urls')),
-    url(r'^courses/', include('apps.mycourses.urls'))
+    url(r'^courses/', include('apps.mycourses.urls')),
+    url(r'^ninjagold/', include('apps.ninjagold.urls'))
 ]

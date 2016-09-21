@@ -9,7 +9,7 @@
 <body>
     <div class="deletediv">
         <h1>Are you sure you want to delete the following course?</h1>
-        <form action="/confirmdelete/{{courseid}}" method="POST">
+        <form action="/courses/confirmdelete/{{courseid}}" method="POST">
             {% csrf_token %}
             {{courseid}}
             <table class='deletediv'>
